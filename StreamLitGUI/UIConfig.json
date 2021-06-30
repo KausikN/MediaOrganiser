@@ -1,0 +1,10 @@
+{
+    "PROJECT_NAME": "MediaOrganiser",
+    "PROJECT_LINK": "https://github.com/KausikN/MediaOrganiser",
+
+    "PROJECT_DESC": "Movies and Series Organised Viewing tool",
+
+    "PROJECT_README": "README.md",
+
+    "PROJECT_MODES": ["View Movies", "View Series", "Settings"]
+}

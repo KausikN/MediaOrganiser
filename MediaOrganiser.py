@@ -14,7 +14,7 @@ SUBTITLE_EXTENSIONS = ['.srt']
 POSTERIMAGE_EXTENSIONS = ['.bmp', '.png', '.jpg', '.jpeg']
 
 # Main Functions
-def MediaOrganise_Movies(parent_path, save_path, MatchFunc=MatcherLibrary.Matcher_Direct):
+def MediaOrganise_Movies(parent_path, save_path=None, MatchFunc=MatcherLibrary.Matcher_Direct):
     '''
     For Movies, it searches for any video files and corresponding subtitle files with similar name in parent path recursively
     '''
@@ -92,16 +92,17 @@ def MediaOrganise_Movies(parent_path, save_path, MatchFunc=MatcherLibrary.Matche
     # |_  {MovieName}.{txt}           (DetailsFile)       - IF AVAILABLE
 
     # Save Data as JSON
-    moviesData = {
-        "path": parent_path,
-        "Movies": OrganisedMoviesData
-    }
-    json.dump(moviesData, open(save_path, 'w'))
+    if save_path is not None:
+        moviesData = {
+            "path": parent_path,
+            "data": OrganisedMoviesData
+        }
+        json.dump(moviesData, open(save_path, 'w'))
 
     return OrganisedMoviesData
 
 
-def MediaOrganise_Series(parent_path, save_path, MatchFunc=MatcherLibrary.Matcher_Direct):
+def MediaOrganise_Series(parent_path, save_path=None, MatchFunc=MatcherLibrary.Matcher_Direct):
     '''
     For Series, it searches for any episode video files and corresponding subtitle files with similar name in parent path recursively
     '''
@@ -173,7 +174,7 @@ def MediaOrganise_Series(parent_path, save_path, MatchFunc=MatcherLibrary.Matche
                 break
 
         episodeData = {
-            "episodeName": vidFileName,
+            "name": vidFileName,
             "seriesName": seriesName,
             "seasonName": seasonName,
             "vidPath": vidPath,
@@ -204,7 +205,7 @@ def MediaOrganise_Series(parent_path, save_path, MatchFunc=MatcherLibrary.Matche
             seasonsData.append(seasonData)
         seriesData = {
             "name": series,
-            "seasons": seasonsData
+            "data": seasonsData
         }
         OrganisedSeriesData.append(seriesData)
 
@@ -222,25 +223,26 @@ def MediaOrganise_Series(parent_path, save_path, MatchFunc=MatcherLibrary.Matche
     #     |_  {S2E1}.{txt}           (DetailsFile)       - IF AVAILABLE
 
     # Save Data as JSON
-    seriesData = {
-        "path": parent_path,
-        "Series": OrganisedSeriesData
-    }
-    json.dump(seriesData, open(save_path, 'w'))
+    if save_path is not None:
+        seriesData = {
+            "path": parent_path,
+            "data": OrganisedSeriesData
+        }
+        json.dump(seriesData, open(save_path, 'w'))
 
     return OrganisedSeriesData
 
 # Driver Code
-# Params
-parentPath = 'Movies/'
-savePath = 'OrganisedData/MoviesData.json'
+# # Params
+# parentPath = 'Movies/'
+# savePath = 'OrganisedData/MoviesData.json'
 
-MatchFunc = MatcherLibrary.Matcher_Direct
-# Params
+# MatchFunc = MatcherLibrary.Matcher_Direct
+# # Params
 
-# RunCode
-# Data = MediaOrganise_Movies(parentPath, savePath, MatchFunc)
-Data = MediaOrganise_Series(parentPath, savePath, MatchFunc)
-for d in Data:
-    print(d)
-    print()
+# # RunCode
+# # Data = MediaOrganise_Movies(parentPath, savePath, MatchFunc)
+# Data = MediaOrganise_Series(parentPath, savePath, MatchFunc)
+# for d in Data:
+#     print(d)
+#     print()
