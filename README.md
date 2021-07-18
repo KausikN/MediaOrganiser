@@ -2,14 +2,9 @@
  Movies and Series Organised Viewing tool
 
 # GUI
- - Install streamlit using
-   ```
-   pip install streamlit
-   ```
- - Launch Streamlit GUI in the repo folder by
-   ```
-   streamlit run app.py
-   ```
+
+ - GUI Hosted using streamlit
+ - Run [StartUI.sh](StartUI.sh) to view the app on your browser!
 
 # Movie Organiser
  - Specify the folders to be scanned for movies under settings
