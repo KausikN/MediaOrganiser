@@ -100,9 +100,9 @@ def SaveCacheData():
     global CACHE_MOVIEDIRS
     global CACHE_SERIESDIRS
     global CACHE_SETTINGS
-    json.dump({"dirs": CACHE_MOVIEDIRS}, open(CACHEPATH_MOVIEDIRS, 'w'))
-    json.dump({"dirs": CACHE_SERIESDIRS}, open(CACHEPATH_SERIESDIRS, 'w'))
-    json.dump(CACHE_SETTINGS, open(CACHEPATH_SETTINGS, 'w'))
+    json.dump({"dirs": CACHE_MOVIEDIRS}, open(CACHEPATH_MOVIEDIRS, 'w'), indent=4)
+    json.dump({"dirs": CACHE_SERIESDIRS}, open(CACHEPATH_SERIESDIRS, 'w'), indent=4)
+    json.dump(CACHE_SETTINGS, open(CACHEPATH_SETTINGS, 'w'), indent=4)
 
 def ClearPosterPreviews():
     # Deletes all poster images and preview images for movies and series

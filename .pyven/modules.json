@@ -1,0 +1,103 @@
+{
+    "name": "MediaOrganiser",
+    "repoLink": "https://github.com/KausikN/MediaOrganiser",
+    "localPath": "E:/Github Codes and Projects/Projects/MediaOrganiser",
+    "modules": {
+        "app.py": {
+            "name": "app",
+            "type": "local",
+            "link": "https://github.com/KausikN/MediaOrganiser/blob/master/app.py",
+            "parentDir": "E:/Github Codes and Projects/Projects/MediaOrganiser",
+            "subDir": "",
+            "dependencies": [
+                "streamlit.py",
+                "os.py",
+                "cv2.py",
+                "json.py",
+                "MediaOrganiser.py"
+            ]
+        },
+        "MatcherLibrary.py": {
+            "name": "MatcherLibrary",
+            "type": "local",
+            "link": "https://github.com/KausikN/MediaOrganiser/blob/master/MatcherLibrary.py",
+            "parentDir": "E:/Github Codes and Projects/Projects/MediaOrganiser",
+            "subDir": "",
+            "dependencies": [
+                "os.py",
+                "re.py",
+                "difflib.py"
+            ]
+        },
+        "MediaOrganiser.py": {
+            "name": "MediaOrganiser",
+            "type": "local",
+            "link": "https://github.com/KausikN/MediaOrganiser/blob/master/MediaOrganiser.py",
+            "parentDir": "E:/Github Codes and Projects/Projects/MediaOrganiser",
+            "subDir": "",
+            "dependencies": [
+                "os.py",
+                "json.py",
+                "cv2.py",
+                "tqdm.py",
+                "MatcherLibrary.py"
+            ]
+        },
+        "tqdm.py": {
+            "name": "tqdm",
+            "type": "inbuilt",
+            "link": "",
+            "parentDir": "E:/Github Codes and Projects/Projects/MediaOrganiser",
+            "subDir": "",
+            "dependencies": []
+        },
+        "re.py": {
+            "name": "re",
+            "type": "inbuilt",
+            "link": "",
+            "parentDir": "E:/Github Codes and Projects/Projects/MediaOrganiser",
+            "subDir": "",
+            "dependencies": []
+        },
+        "json.py": {
+            "name": "json",
+            "type": "inbuilt",
+            "link": "",
+            "parentDir": "E:/Github Codes and Projects/Projects/MediaOrganiser",
+            "subDir": "",
+            "dependencies": []
+        },
+        "difflib.py": {
+            "name": "difflib",
+            "type": "inbuilt",
+            "link": "",
+            "parentDir": "E:/Github Codes and Projects/Projects/MediaOrganiser",
+            "subDir": "",
+            "dependencies": []
+        },
+        "cv2.py": {
+            "name": "cv2",
+            "type": "inbuilt",
+            "link": "",
+            "parentDir": "E:/Github Codes and Projects/Projects/MediaOrganiser",
+            "subDir": "",
+            "dependencies": []
+        },
+        "streamlit.py": {
+            "name": "streamlit",
+            "type": "inbuilt",
+            "link": "",
+            "parentDir": "E:/Github Codes and Projects/Projects/MediaOrganiser",
+            "subDir": "",
+            "dependencies": []
+        },
+        "os.py": {
+            "name": "os",
+            "type": "inbuilt",
+            "link": "",
+            "parentDir": "E:/Github Codes and Projects/Projects/MediaOrganiser",
+            "subDir": "",
+            "dependencies": []
+        }
+    }
+}

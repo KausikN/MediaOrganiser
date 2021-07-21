@@ -1,0 +1,9 @@
+{
+    "files_to_download": [
+        "StreamLitGUI/",
+        "app.py",
+        "MediaOrganiser.py",
+        "MatcherLibrary.py",
+        "OrganisedData/"
+    ]
+}
