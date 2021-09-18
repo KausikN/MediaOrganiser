@@ -253,7 +253,7 @@ def view_series():
     st.markdown("## Episodes")
     st.markdown("<hr>", unsafe_allow_html=True)
     for ep in SeasonsChoiceData["episodes"]:
-        col1, col2 = st.beta_columns([1, 2])
+        col1, col2 = st.columns([1, 2])
 
         UI_VideoPreview(ep, SAVEPATH_SERIESPREVIEWS, "Episode", col=col1)
 
@@ -280,14 +280,14 @@ def settings():
 
     st.markdown("## Movie Dirs")
     CACHE_MOVIEDIRS = UI_SpecifyDirPaths(CACHE_MOVIEDIRS)
-    col1, col2 = st.beta_columns([1, 2])
+    col1, col2 = st.columns([1, 2])
     col1.markdown("Movies Loaded: ")
     MoviesCountField = col2.empty()
     MoviesCountField.markdown("" + str(len(DATA_MOVIES)))
 
     st.markdown("## Series Dirs")
     CACHE_SERIESDIRS = UI_SpecifyDirPaths(CACHE_SERIESDIRS)
-    col1, col2 = st.beta_columns([1, 2])
+    col1, col2 = st.columns([1, 2])
     col1.markdown("Series Loaded: ")
     SeriesCountField = col2.empty()
     SeriesCountField.markdown("" + str(len(DATA_SERIES)))
@@ -296,7 +296,7 @@ def settings():
     CACHE_SETTINGS["GEN_POSTERS"] = st.checkbox("Generate Posters if not available", CACHE_SETTINGS["GEN_POSTERS"])
     CACHE_SETTINGS["CLEAR_DATA_AFTER_RUN"] = st.checkbox("Delete Generated Images After Runs", CACHE_SETTINGS["CLEAR_DATA_AFTER_RUN"])
 
-    l, m, r = st.beta_columns([5, 1, 5])
+    l, m, r = st.columns([5, 1, 5])
     if m.button("Save"):
         SaveCacheData()
 
