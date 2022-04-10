@@ -7,7 +7,6 @@ import os
 import re
 from difflib import SequenceMatcher
 
-
 # Util Functions
 def ParseEpisodeDetails(name, countDigits=-1):
     # Get the season number and episode number from episode name

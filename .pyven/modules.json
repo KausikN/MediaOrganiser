@@ -14,7 +14,7 @@
                 "os.py",
                 "cv2.py",
                 "json.py",
-                "MediaOrganiser.py"
+                "*.py"
             ]
         },
         "MatcherLibrary.py": {
@@ -26,7 +26,7 @@
             "dependencies": [
                 "os.py",
                 "re.py",
-                "difflib.py"
+                "SequenceMatcher.py"
             ]
         },
         "MediaOrganiser.py": {
@@ -39,20 +39,19 @@
                 "os.py",
                 "json.py",
                 "cv2.py",
-                "tqdm.py",
-                "MatcherLibrary.py"
+                "*.py"
             ]
-        },
-        "tqdm.py": {
-            "name": "tqdm",
-            "type": "inbuilt",
-            "link": "",
-            "parentDir": "E:/Github Codes and Projects/Projects/MediaOrganiser",
-            "subDir": "",
-            "dependencies": []
         },
         "re.py": {
             "name": "re",
+            "type": "missing",
+            "link": "",
+            "parentDir": "",
+            "subDir": "",
+            "dependencies": []
+        },
+        "streamlit.py": {
+            "name": "streamlit",
             "type": "inbuilt",
             "link": "",
             "parentDir": "E:/Github Codes and Projects/Projects/MediaOrganiser",
@@ -67,8 +66,24 @@
             "subDir": "",
             "dependencies": []
         },
-        "difflib.py": {
-            "name": "difflib",
+        "os.py": {
+            "name": "os",
+            "type": "inbuilt",
+            "link": "",
+            "parentDir": "E:/Github Codes and Projects/Projects/MediaOrganiser",
+            "subDir": "",
+            "dependencies": []
+        },
+        "SequenceMatcher.py": {
+            "name": "SequenceMatcher",
+            "type": "inbuilt",
+            "link": "",
+            "parentDir": "E:/Github Codes and Projects/Projects/MediaOrganiser",
+            "subDir": "",
+            "dependencies": []
+        },
+        "*.py": {
+            "name": "*",
             "type": "inbuilt",
             "link": "",
             "parentDir": "E:/Github Codes and Projects/Projects/MediaOrganiser",
@@ -77,22 +92,6 @@
         },
         "cv2.py": {
             "name": "cv2",
-            "type": "inbuilt",
-            "link": "",
-            "parentDir": "E:/Github Codes and Projects/Projects/MediaOrganiser",
-            "subDir": "",
-            "dependencies": []
-        },
-        "streamlit.py": {
-            "name": "streamlit",
-            "type": "inbuilt",
-            "link": "",
-            "parentDir": "E:/Github Codes and Projects/Projects/MediaOrganiser",
-            "subDir": "",
-            "dependencies": []
-        },
-        "os.py": {
-            "name": "os",
             "type": "inbuilt",
             "link": "",
             "parentDir": "E:/Github Codes and Projects/Projects/MediaOrganiser",

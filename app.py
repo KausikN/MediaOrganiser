@@ -8,7 +8,7 @@ import os
 import cv2
 import json
 
-import MediaOrganiser
+from MediaOrganiser import *
 
 # Main Vars
 config = json.load(open('./StreamLitGUI/UIConfig.json', 'r'))
@@ -44,16 +44,16 @@ def HomePage():
 
 #############################################################################################################################
 # Repo Based Vars
-SAVEPATH_MOVIEDATA = 'OrganisedData/Movies/'
-SAVEPATH_SERIESDATA = 'OrganisedData/Series/'
-SAVEPATH_MOVIEPOSTERS = 'StreamLitGUI/DefaultData/MoviePosters/'
-SAVEPATH_SERIESPOSTERS = 'StreamLitGUI/DefaultData/SeriesPosters/'
-SAVEPATH_MOVIEPREVIEWS = 'StreamLitGUI/DefaultData/MoviePreviews/'
-SAVEPATH_SERIESPREVIEWS = 'StreamLitGUI/DefaultData/SeriesPreviews/'
-DEFAULT_IMAGEEXT = '.jpg'
+SAVEPATH_MOVIEDATA = "OrganisedData/Movies/"
+SAVEPATH_SERIESDATA = "OrganisedData/Series/"
+SAVEPATH_MOVIEPOSTERS = "StreamLitGUI/DefaultData/MoviePosters/"
+SAVEPATH_SERIESPOSTERS = "StreamLitGUI/DefaultData/SeriesPosters/"
+SAVEPATH_MOVIEPREVIEWS = "StreamLitGUI/DefaultData/MoviePreviews/"
+SAVEPATH_SERIESPREVIEWS = "StreamLitGUI/DefaultData/SeriesPreviews/"
+DEFAULT_IMAGEEXT = ".jpg"
 
-DEFAULT_PATH_POSTER = 'StreamLitGUI/DefaultData/PosterNotFound.png'
-DEFAULT_PATH_LOADING = 'StreamLitGUI/DefaultData/LoadingGIF.gif'
+DEFAULT_PATH_POSTER = "StreamLitGUI/DefaultData/PosterNotFound.png"
+DEFAULT_PATH_LOADING = "StreamLitGUI/DefaultData/LoadingGIF.gif"
 
 CACHEPATH_MOVIEDIRS = "StreamLitGUI/CacheData/MovieDirs.json"
 CACHEPATH_SERIESDIRS = "StreamLitGUI/CacheData/SeriesDirs.json"
@@ -83,9 +83,6 @@ def FixPath(path):
     return "/".join(fixedPathSplit)
 
 def Data_Path2SaveName(path):
-    print(path)
-    print(path.replace(" ", "_").strip("/").replace("/", ";").replace("\\", ";"))
-    print()
     return path.replace(" ", "_").strip("/").replace("/", ";").replace("\\", ";")
 
 def LoadCacheData():
@@ -125,7 +122,7 @@ def GenerateOrganisedData_Movies(paths):
         path = paths[i]
         if os.path.exists(path):
             savePath = SAVEPATH_MOVIEDATA + "MoviesData_" + str(i) + ".json"
-            MediaOrganiser.MediaOrganise_Movies(path, savePath)
+            MediaOrganise_Movies(path, savePath)
 
 def GenerateOrganisedData_Series(paths):
     # Delete Prexisting Data
@@ -136,7 +133,7 @@ def GenerateOrganisedData_Series(paths):
         path = paths[i]
         if os.path.exists(path):
             savePath = SAVEPATH_SERIESDATA + "SeriesData_" + str(i) + ".json"
-            MediaOrganiser.MediaOrganise_Series(path, savePath)
+            MediaOrganise_Series(path, savePath)
 
 def LoadOrganisedData_Movies():
     global DATA_MOVIES
@@ -173,7 +170,7 @@ def UI_VideoPreview(data, saveDir, title="Movie", col=st):
     USERINPUT_PreviewPart = col.slider("", 0.0, 1.0, 0.0, 0.01, key=data["vidPath"])
     PreviewWindow.image(DEFAULT_PATH_LOADING, title + " Preview", use_column_width=True)
     previewPath = saveDir + data["name"] + DEFAULT_IMAGEEXT
-    MediaOrganiser.GenerateMoviePoster(data["vidPath"], previewPath, USERINPUT_PreviewPart)
+    GenerateMoviePoster(data["vidPath"], previewPath, USERINPUT_PreviewPart)
     Preview = cv2.cvtColor(cv2.imread(previewPath), cv2.COLOR_BGR2RGB)
     PreviewWindow.image(Preview, title + " Preview", use_column_width=True)
 
@@ -201,7 +198,7 @@ def view_movies():
     else:
         if CACHE_SETTINGS["GEN_POSTERS"]:
             posterPath = SAVEPATH_MOVIEPOSTERS + MovieChoiceData["name"] + DEFAULT_IMAGEEXT
-            MediaOrganiser.GenerateMoviePoster(MovieChoiceData["vidPath"], posterPath, 0.25)
+            GenerateMoviePoster(MovieChoiceData["vidPath"], posterPath, 0.25)
         else:
             posterPath = FixPath(DEFAULT_PATH_POSTER)
     Poster = cv2.cvtColor(cv2.imread(posterPath), cv2.COLOR_BGR2RGB)

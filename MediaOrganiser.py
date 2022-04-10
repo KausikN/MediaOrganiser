@@ -6,18 +6,19 @@ Media Organiser tool
 import os
 import json
 import cv2
-from tqdm import tqdm
 
-import MatcherLibrary
+from MatcherLibrary import *
 
 # Main Vars
-VIDEO_EXTENSIONS = ['.mkv', '.mp4', '.avi']
-SUBTITLE_EXTENSIONS = ['.srt']
-POSTERIMAGE_EXTENSIONS = ['.bmp', '.png', '.jpg', '.jpeg']
+VIDEO_EXTENSIONS = [".mkv", ".mp4", ".avi"]
+SUBTITLE_EXTENSIONS = [".srt"]
+POSTERIMAGE_EXTENSIONS = [".bmp", ".png", ".jpg", ".jpeg"]
 
 # Main Functions
 def MediaOrganise_Movies(parent_path, save_path=None):
-    # For Movies, it searches for any video files and corresponding subtitle files with similar name in parent path recursively
+    '''
+    For Movies, it searches for any video files and corresponding subtitle files with similar name in parent path recursively
+    '''
 
     # Walk through path and log movies and subtitle files and other files
     MoviePaths = []
@@ -65,14 +66,14 @@ def MediaOrganise_Movies(parent_path, save_path=None):
         # Check for subtitle files
         for si in range(len(UnMatched_Subtitles)):
             s = UnMatched_Subtitles[si]
-            if MatcherLibrary.Matcher_WordsPartOf(vidFileName, s[1], False):
+            if Matcher_WordsPartOf(vidFileName, s[1], False):
                 match_Subtitle = '/'.join([s[0], s[1] + s[2]])
                 UnMatched_Subtitles.pop(si) # 2 vids CANT have same subtitle so remove if matched
                 break
         ## Posters
         for pi in range(len(UnMatched_Posters)):
             p = UnMatched_Posters[pi]
-            if MatcherLibrary.Matcher_WordsPartOf(vidFileName, p[1], False):
+            if Matcher_WordsPartOf(vidFileName, p[1], False):
                 match_Poster = '/'.join([p[0], p[1] + p[2]])
                 # UnMatched_Posters.pop(pi) # 2 vids can have same poster so DONT remove
                 break
@@ -160,16 +161,16 @@ def MediaOrganise_Series(parent_path, save_path=None):
         ## Subtitles - match the season and episode numbers or name words with vid file name
         for si in range(len(UnMatched_Subtitles)):
             s = UnMatched_Subtitles[si]
-            if MatcherLibrary.Matcher_Direct(seriesName, s[1]) and MatcherLibrary.Matcher_Direct(seasonName, s[2]):
-                if MatcherLibrary.Matcher_EpisodeMatch(vidFileName, s[3]) or MatcherLibrary.Matcher_WordsPartOf(vidFileName, s[3], False):
+            if Matcher_Direct(seriesName, s[1]) and Matcher_Direct(seasonName, s[2]):
+                if Matcher_EpisodeMatch(vidFileName, s[3]) or Matcher_WordsPartOf(vidFileName, s[3], False):
                     match_Subtitle = '/'.join([s[0], s[3] + s[4]])
                     UnMatched_Subtitles.pop(si) # 2 vids CANT have same subtitle so remove if matched
                     break
         ## Posters - Check if direct match available
         for pi in range(len(UnMatched_Posters)):
             p = UnMatched_Posters[pi]
-            if MatcherLibrary.Matcher_Direct(seriesName, p[1]) and MatcherLibrary.Matcher_Direct(seasonName, p[2]):
-                if MatcherLibrary.Matcher_EpisodeMatch(vidFileName, p[3]) or MatcherLibrary.Matcher_WordsPartOf(vidFileName, p[3], False):
+            if Matcher_Direct(seriesName, p[1]) and Matcher_Direct(seasonName, p[2]):
+                if Matcher_EpisodeMatch(vidFileName, p[3]) or Matcher_WordsPartOf(vidFileName, p[3], False):
                     match_Poster = '/'.join([p[0], p[3] + p[4]])
                     UnMatched_Posters.pop(pi)
                     break
@@ -204,7 +205,7 @@ def MediaOrganise_Series(parent_path, save_path=None):
         seriesPosterPath = None
         for pi in range(len(UnMatched_Posters)):
             p = UnMatched_Posters[pi]
-            if MatcherLibrary.Matcher_Direct(series, p[2]) or MatcherLibrary.Matcher_WordsPartOf(p[3], series, False):
+            if Matcher_Direct(series, p[2]) or Matcher_WordsPartOf(p[3], series, False):
                 seriesPosterPath = '/'.join([p[0], p[3] + p[4]])
                 break
 
@@ -213,7 +214,7 @@ def MediaOrganise_Series(parent_path, save_path=None):
             posterPath = None
             for pi in range(len(UnMatched_Posters)):
                 p = UnMatched_Posters[pi]
-                if MatcherLibrary.Matcher_Direct(series, p[1]) and MatcherLibrary.Matcher_Direct(season, p[2]) or MatcherLibrary.Matcher_WordsPartOf(series + " " + season, p[3]):
+                if Matcher_Direct(series, p[1]) and Matcher_Direct(season, p[2]) or Matcher_WordsPartOf(series + " " + season, p[3]):
                     posterPath = '/'.join([p[0], p[3] + p[4]])
                     if backupSeasonPoster is None: backupSeasonPoster = posterPath
                     break
@@ -286,25 +287,3 @@ def GenerateMoviePoster(vid_path, savePath=None, framePos=0.5):
     cv2.imwrite(savePath, Poster)
 
 # Driver Code
-# Generate Movies and Series Details
-# # Params
-# parentPath = 'Movies/'
-# savePath = 'OrganisedData/MoviesData.json'
-# # Params
-
-# # RunCode
-# # Data = MediaOrganise_Movies(parentPath, savePath)
-# Data = MediaOrganise_Series(parentPath, savePath)
-# for d in Data:
-#     print(d)
-#     print()
-
-# Generate Movies and Series Posters
-# # Params
-# parentPath = 'E:/Movies/English Movies/About Time (2013) [1080p]/About.Time.2013.1080p.BluRay.x264.YIFY.mp4'
-# saveExt = '.jpg'
-# framePos = 0.25
-# # Params
-
-# # RunCode
-# GenerateMoviePoster(parentPath, saveExt, framePos=framePos)

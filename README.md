@@ -18,20 +18,20 @@
 
 # Movie Organiser
  - Specify the folders to be scanned for movies under settings
-    ![Settings](DocImages/Settings.PNG)
+    ![Settings](GeneratedVisualisations/Settings.PNG)
 
  - Select the movie
     - View movie details and subtitles
     - View movie preview
-    ![Movie Details](DocImages/ViewMovies.PNG)
+    ![Movie Details](GeneratedVisualisations/ViewMovies.PNG)
 
 # Series Organiser
  - Specify the folders to be scanned for series under settings
-    ![Settings](DocImages/Settings.PNG)
+    ![Settings](GeneratedVisualisations/Settings.PNG)
 
  - Select series and season
     - View series details and episodes
     - View episode previews
-    ![Movie Details](DocImages/ViewSeries.PNG)
+    ![Movie Details](GeneratedVisualisations/ViewSeries.PNG)
     
     
